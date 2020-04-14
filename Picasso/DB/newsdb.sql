@@ -23,3 +23,11 @@ CREATE TABLE `newsdb`.`user_news`  (
   `comments` varchar(255) NULL,
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `newsdb`.`subscribe`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NULL,
+  `category` int(11) NULL,
+  `issubscribe` tinyint(1) NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+);

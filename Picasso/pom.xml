@@ -21,6 +21,8 @@
     <modules>
         <module>common</module>
         <module>user</module>
+        <module>news</module>
+        <module>etl</module>
     </modules>
 
     <dependencies>
