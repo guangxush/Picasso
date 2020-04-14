@@ -1,0 +1,248 @@
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.675032 
+Recall: 0.687063
+F1: 0.652313
+Accuracy: 0.687063
+Auc: 0.828148 
+|bilstm_att_word|0.675032|0.687063|0.652313|0.687063|0.828148|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.736334 
+Recall: 0.744851
+F1: 0.723209
+Accuracy: 0.744851
+Auc: 0.860582 
+|bilstm_att_word|0.736334|0.744851|0.723209|0.744851|0.860582|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.792636 
+Recall: 0.792242
+F1: 0.781981
+Accuracy: 0.792242
+Auc: 0.886212 
+|bilstm_att_word|0.792636|0.792242|0.781981|0.792242|0.886212|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.805976 
+Recall: 0.794641
+F1: 0.789099
+Accuracy: 0.794641
+Auc: 0.888681 
+|bilstm_att_word|0.805976|0.794641|0.789099|0.794641|0.888681|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.804524 
+Recall: 0.794441
+F1: 0.794441
+Accuracy: 0.794441
+Auc: 0.890144 
+|bilstm_att_word|0.804524|0.794441|0.794441|0.794441|0.890144|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.806652 
+Recall: 0.793641
+F1: 0.794080
+Accuracy: 0.793641
+Auc: 0.889815 
+|bilstm_att_word|0.806652|0.793641|0.794080|0.793641|0.889815|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.822122 
+Recall: 0.816637
+F1: 0.815620
+Accuracy: 0.816637
+Auc: 0.901051 
+|bilstm_att_word|0.822122|0.816637|0.815620|0.816637|0.901051|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.822942 
+Recall: 0.816037
+F1: 0.814953
+Accuracy: 0.816037
+Auc: 0.898948 
+|bilstm_att_word|0.822942|0.816037|0.814953|0.816037|0.898948|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.819928 
+Recall: 0.812637
+F1: 0.812431
+Accuracy: 0.812637
+Auc: 0.898674 
+|bilstm_att_word|0.819928|0.812637|0.812431|0.812637|0.898674|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.814665 
+Recall: 0.809038
+F1: 0.807697
+Accuracy: 0.809038
+Auc: 0.898111 
+|bilstm_att_word|0.814665|0.809038|0.807697|0.809038|0.898111|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.813242 
+Recall: 0.805839
+F1: 0.805241
+Accuracy: 0.805839
+Auc: 0.895932 
+|bilstm_att_word|0.813242|0.805839|0.805241|0.805839|0.895932|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.803877 
+Recall: 0.798240
+F1: 0.792507
+Accuracy: 0.798240
+Auc: 0.889265 
+|bilstm_att_word|0.803877|0.798240|0.792507|0.798240|0.889265|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.497498 
+Recall: 0.434800
+F1: 0.445665
+Accuracy: 0.434800
+Auc: 0.693745 
+|bilstm_att_word|0.497498|0.434800|0.445665|0.434800|0.693745|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.622441 
+Recall: 0.489600
+F1: 0.492828
+Accuracy: 0.489600
+Auc: 0.723457 
+|bilstm_att_word|0.622441|0.489600|0.492828|0.489600|0.723457|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.673416 
+Recall: 0.654800
+F1: 0.648783
+Accuracy: 0.654800
+Auc: 0.812891 
+|bilstm_att_word|0.673416|0.654800|0.648783|0.654800|0.812891|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.714692 
+Recall: 0.637600
+F1: 0.642225
+Accuracy: 0.637600
+Auc: 0.803519 
+|bilstm_att_word|0.714692|0.637600|0.642225|0.637600|0.803519|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.720167 
+Recall: 0.700400
+F1: 0.700728
+Accuracy: 0.700400
+Auc: 0.837914 
+|bilstm_att_word|0.720167|0.700400|0.700728|0.700400|0.837914|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.723546 
+Recall: 0.706400
+F1: 0.707689
+Accuracy: 0.706400
+Auc: 0.841298 
+|bilstm_att_word|0.723546|0.706400|0.707689|0.706400|0.841298|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.721007 
+Recall: 0.712400
+F1: 0.712901
+Accuracy: 0.712400
+Auc: 0.844277 
+|bilstm_att_word|0.721007|0.712400|0.712901|0.712400|0.844277|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.726677 
+Recall: 0.700800
+F1: 0.703866
+Accuracy: 0.700800
+Auc: 0.838122 
+|bilstm_att_word|0.726677|0.700800|0.703866|0.700800|0.838122|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.716632 
+Recall: 0.677600
+F1: 0.682380
+Accuracy: 0.677600
+Auc: 0.825425 
+|bilstm_att_word|0.716632|0.677600|0.682380|0.677600|0.825425|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.724077 
+Recall: 0.705200
+F1: 0.708684
+Accuracy: 0.705200
+Auc: 0.840798 
+|bilstm_att_word|0.724077|0.705200|0.708684|0.705200|0.840798|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.740437 
+Recall: 0.709600
+F1: 0.713177
+Accuracy: 0.709600
+Auc: 0.842900 
+|bilstm_att_word|0.740437|0.709600|0.713177|0.709600|0.842900|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.732540 
+Recall: 0.712800
+F1: 0.716985
+Accuracy: 0.712800
+Auc: 0.844615 
+|bilstm_att_word|0.732540|0.712800|0.716985|0.712800|0.844615|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.734079 
+Recall: 0.684000
+F1: 0.686659
+Accuracy: 0.684000
+Auc: 0.828893 
+|bilstm_att_word|0.734079|0.684000|0.686659|0.684000|0.828893|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.727859 
+Recall: 0.667200
+F1: 0.671356
+Accuracy: 0.667200
+Auc: 0.820906 
+|bilstm_att_word|0.727859|0.667200|0.671356|0.667200|0.820906|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.738732 
+Recall: 0.726400
+F1: 0.728156
+Accuracy: 0.726400
+Auc: 0.851953 
+|bilstm_att_word|0.738732|0.726400|0.728156|0.726400|0.851953|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.738649 
+Recall: 0.720800
+F1: 0.722226
+Accuracy: 0.720800
+Auc: 0.848818 
+|bilstm_att_word|0.738649|0.720800|0.722226|0.720800|0.848818|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.721135 
+Recall: 0.678400
+F1: 0.678251
+Accuracy: 0.678400
+Auc: 0.826992 
+|bilstm_att_word|0.721135|0.678400|0.678251|0.678400|0.826992|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.726062 
+Recall: 0.716400
+F1: 0.716401
+Accuracy: 0.716400
+Auc: 0.846473 
+|bilstm_att_word|0.726062|0.716400|0.716401|0.716400|0.846473|
+
+- ** Evaluation results of bilstm_att_word model ** -
+Precision: 0.733346 
+Recall: 0.710400
+F1: 0.713085
+Accuracy: 0.710400
+Auc: 0.843645 
+|bilstm_att_word|0.733346|0.710400|0.713085|0.710400|0.843645|
