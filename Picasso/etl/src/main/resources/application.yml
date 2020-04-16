@@ -1,0 +1,30 @@
+kafka:
+  topic: shgx
+
+mail:
+  host: smtp.163.com
+  port: 25
+  protocol: smtp
+  from: guangxush@163.com
+  name: guangxush@163.com
+  password: 123456
+  subject: SpringBoot-Kafka-SendMessage
+  to: guangxush@qq.com
+
+
+server:
+  target:
+    user: shgx
+    host: 192.168.1.211
+    ports: 22  #  cannot define this server port as "server.port", while it conflict with tomcat port and cannot start the Spring server
+    keyfile: ~/.ssh/cruise
+  jumpbox:
+    user: shgx
+    host: 10.60.103.248
+    ports: 22
+    keyfile: ~/.ssh/id_rsa
+  file:
+    targetdir: /home/shgx/dw/dev/tmp/extract/
+    targetfile: news.txt
+
+
