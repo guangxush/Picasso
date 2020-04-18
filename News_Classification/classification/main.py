@@ -9,7 +9,7 @@ from models import *
 from config import Config
 from load_data import load_word_data, load_char_data, load_bert_data
 
-train = True
+train = False
 level = 'word'
 fasttext = False
 overwrite = False
