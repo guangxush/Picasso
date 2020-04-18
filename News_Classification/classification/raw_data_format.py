@@ -10,9 +10,12 @@ def generate_data(file_input, file_output, corpus_output):
     fw = codecs.open(file_output, 'w', encoding='utf-8')
     fw_corpus = codecs.open(corpus_output, 'w', encoding='utf-8')
     json_dict = {}
+    count = 0
     for line in fr:
         line_data = line.rstrip('\n')
+        count += 1
         try:
+            json_dict['id'] = count
             json_dict['label'] = line_data.split('_!_')[1]
             json_dict['title'] = line_data.split('_!_')[3]
         except IndexError:
