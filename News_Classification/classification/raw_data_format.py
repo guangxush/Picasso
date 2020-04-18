@@ -35,8 +35,8 @@ def divide_data(input_file, train_file, test_file):
     fr = codecs.open(input_file, 'r', encoding='utf-8')
     fw_train = codecs.open(train_file, 'w', encoding='utf-8')
     fw_test = codecs.open(test_file, 'w', encoding='utf-8')
-    train_range = 10000
-    test_range = 12000
+    train_range = 70
+    test_range = 100
     lines = 0
     for line in fr:
         lines += 1
@@ -51,11 +51,11 @@ def divide_data(input_file, train_file, test_file):
 
 
 if __name__ == '__main__':
-    file_input = '../data/toutiao_cat_data.txt'
-    file_output = '../data/news_data.txt'
-    corpus_output = '../data/corpus.txt'
+    file_input = './data/toutiao_cat_data.txt'
+    file_output = './data/news_data.txt'
+    corpus_output = './data/corpus.txt'
     generate_data(file_input=file_input, file_output=file_output, corpus_output=corpus_output)
-    input_file = '../data/news_data.txt'
-    train_file = '../data/train_data.txt'
-    test_file = '../data/test_data.txt'
+    input_file = './data/news_data.txt'
+    train_file = './data/train_data.txt'
+    test_file = './data/test_data.txt'
     divide_data(input_file=input_file, train_file=train_file, test_file=test_file)
