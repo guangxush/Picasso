@@ -23,5 +23,5 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
 
-user:
-  school: tongji
+app:
+  header: tongji

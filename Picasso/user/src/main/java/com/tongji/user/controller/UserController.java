@@ -22,8 +22,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @Value("${user.school}")
-    private String school;
+    @Value("${app.header}")
+    private String header;
 
     /**
      * 用户登录
@@ -35,7 +35,7 @@ public class UserController {
     @ResponseBody
     public ApiResponse<Boolean> login(@RequestHeader(APP_HEAD) String sHead,
                                       @RequestBody User user){
-        if(!sHead.equals(school)){
+        if(!sHead.equals(header)){
             return new ApiResponse<Boolean>().fail(false);
         }
         Boolean result = userService.login(user.getUid());
@@ -56,7 +56,7 @@ public class UserController {
     @ResponseBody
     public ApiResponse<UserVO> register(@RequestHeader(APP_HEAD) String sHead,
                                         @RequestBody User user){
-        if(!sHead.equals(school)){
+        if(!sHead.equals(header)){
             return new ApiResponse<UserVO>().fail(null);
         }
         UserVO userVO = userService.register(user);
@@ -77,7 +77,7 @@ public class UserController {
     @ResponseBody
     public ApiResponse<UserVO> update(@RequestHeader(APP_HEAD) String sHead,
                                         @RequestBody User user){
-        if(!sHead.equals(school)){
+        if(!sHead.equals(header)){
             return new ApiResponse<UserVO>().fail(null);
         }
         UserVO userVO = userService.update(user);
