@@ -1,0 +1,32 @@
+spring:
+  resources:
+    static-locations: classpath:/static/
+  # Mysql data source
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/newsdb?useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  kafka:
+    bootstrap-servers: localhost:9092 # 指定kafka 代理地址，可以多个
+    producer:
+      batch-size: 16384 # 每次批量发送消息的数量
+      retries: 0
+      buffer-memory: 33554432
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer # 指定消息key和消息体的编解码方式
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer # 指定消息key和消息体的编解码方式
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer # 指定消息key和消息体的编解码方式
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer # 指定消息key和消息体的编解码方式
+      group-id: test-consumer-group # 指定默认消费者group id
+      auto-offset-reset: earliest
+      auto-commit-interval: 100
+      enable-auto-commit: true
+# Tomcat端口号
+server:
+  port: 8090
