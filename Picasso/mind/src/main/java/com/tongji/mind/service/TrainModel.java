@@ -5,7 +5,6 @@ import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.SftpException;
 import com.tongji.mind.util.SSHWrapper;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -20,10 +19,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class FileUpload {
-
-    @Value("${config.file.sources}")
-    private String sourcesDir;
+public class TrainModel {
 
     @Value("${config.file.target}")
     private String targetDir;
@@ -32,7 +28,23 @@ public class FileUpload {
     private SSHWrapper sshWrapper;
 
     /**
-     * upload the file into server
+     * todo
+     * train the model file on server
+     * @param modelName
+     * @return
+     * @throws FileNotFoundException
+     * @throws JSchException
+     * @throws SftpException
+     */
+    public boolean trainModel(List<String> modelName) throws FileNotFoundException, JSchException, SftpException {
+        if(isFileExisted(modelName)){
+            // rpc or post to server
+        }
+        return false;
+    }
+
+    /**
+     * check the model file existed
      *
      * @param uploadModelNames
      * @return
@@ -40,24 +52,25 @@ public class FileUpload {
      * @throws SftpException
      * @throws FileNotFoundException
      */
-    public boolean uploadFile(List<String> uploadModelNames) throws JSchException, SftpException, FileNotFoundException {
+    public boolean isFileExisted(List<String> uploadModelNames) throws JSchException, SftpException, FileNotFoundException {
         ChannelSftp channel = sshWrapper.connect();
         try {
-            for (String uploadFileName : uploadModelNames) {
-                String uploadFile = sourcesDir + uploadFileName + ".py";
-                String targetFile = targetDir + uploadFileName + ".py";
-                // overwrite old file
-                channel.put(new FileInputStream(uploadFile), targetFile, ChannelSftp.OVERWRITE);
+            if (targetDir != null && !"".equals(targetDir)) {
+                channel.cd(targetDir);
+            } else {
+                return false;
             }
-            return true;
+            boolean fileExisted = true;
+            for (String uploadFileName : uploadModelNames) {
+                if (channel.get(uploadFileName + ".py") == null) {
+                    fileExisted = false;
+                }
+            }
+            return fileExisted;
         } catch (SftpException e) {
             log.error("Errors happened in SftpException: " + e.getMessage());
             throw new SftpException(e.id, e.getMessage());
-        } catch (FileNotFoundException e) {
-            log.error("Errors happened in FileNotFoundException: " + e.getMessage());
-            throw new FileNotFoundException(e.getMessage());
-        }
-        finally {
+        } finally {
             channel.exit();
         }
     }
