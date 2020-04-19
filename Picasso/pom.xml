@@ -23,6 +23,7 @@
         <module>user</module>
         <module>news</module>
         <module>etl</module>
+        <module>mind</module>
     </modules>
 
     <dependencies>

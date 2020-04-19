@@ -37,4 +37,12 @@ CREATE TABLE `process` (
    `date` varchar(8)  NULL,
    `processed` tinyint(1) NULL DEFAULT 0,
    PRIMARY KEY (`id`)
-) ;
+);
+
+CREATE TABLE `model`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NULL,
+  `result` varchar(255) NULL,
+  `top` int(11) NULL,
+  PRIMARY KEY (`id`)
+);
