@@ -1,6 +1,5 @@
 package com.tongji.etl.producer;
 
-import junit.framework.TestCase;
 import org.apache.commons.io.LineIterator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
