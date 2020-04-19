@@ -31,3 +31,10 @@ CREATE TABLE `newsdb`.`subscribe`  (
   `issubscribe` tinyint(1) NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `process` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `date` varchar(8)  NULL,
+   `processed` tinyint(1) NULL DEFAULT 0,
+   PRIMARY KEY (`id`)
+) ;
