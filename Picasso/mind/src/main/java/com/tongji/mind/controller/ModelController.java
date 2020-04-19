@@ -1,11 +1,17 @@
 package com.tongji.mind.controller;
 
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.SftpException;
 import com.tongji.common.model.ApiResponse;
 import com.tongji.mind.model.Model;
+import com.tongji.mind.service.FileUpload;
 import com.tongji.mind.service.ModelService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.FileNotFoundException;
+import java.util.List;
 
 import static com.tongji.common.constant.HeadConstant.APP_HEAD;
 
@@ -20,6 +26,9 @@ public class ModelController {
 
     @Autowired
     ModelService modelService;
+
+    @Autowired
+    FileUpload fileUpload;
 
     /**
      * 模型信息更新
@@ -53,6 +62,28 @@ public class ModelController {
         } else {
             return new ApiResponse<Model>().fail(null);
         }
+    }
+
+    /**
+     * 模型信息更新
+     *
+     * @param files
+     * @return
+     */
+    @RequestMapping(path = "upload", method = RequestMethod.POST)
+    @ResponseBody
+    public ApiResponse<Boolean> uploadFile(@RequestBody List<String> files) {
+        try {
+            boolean uploadResult = fileUpload.uploadFile(files);
+            return new ApiResponse<Boolean>().success(uploadResult);
+        } catch (JSchException e) {
+            e.printStackTrace();
+        } catch (SftpException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return new ApiResponse<Boolean>().success(false);
     }
 
 }

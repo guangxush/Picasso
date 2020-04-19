@@ -22,3 +22,15 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
+
+# config
+config:
+  file:
+    sources: ../../News_Classification/classification/
+    target: /data/shgx/Picasso/News_Classification/classification/
+  target:
+    keyfile: ~/.ssh/news
+    user: shgx
+    host: 10.60.103.246
+    port: 21122
+    password: shgx

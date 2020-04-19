@@ -19,7 +19,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -90,5 +92,21 @@ public class ModelControllerTest extends TestCase {
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
         System.out.println(result);
+    }
+
+    @Test
+    public void testUploadFile()throws Exception{
+        List<String> list = new ArrayList<>();
+        list.add("testUploadFile");
+        String json = JSONObject.toJSONString(list);
+        MvcResult result = mockMvc.perform(post("/upload")
+                .contentType(MediaType.APPLICATION_JSON_UTF8).content(json)
+                .accept(MediaType.APPLICATION_JSON_UTF8))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andReturn();
+        String response = result.getResponse().getContentAsString();
+        System.out.println(response);
+        Assert.assertTrue(response.contains("success"));
     }
 }
