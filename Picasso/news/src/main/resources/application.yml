@@ -16,12 +16,26 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/newsdb?useSSL=false&serverTimezone=GMT%2B8
     username: root
-    password: root11
+    password: root
   jpa:
     show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
+  dubbo:
+    application:  #应用配置，用于配置当前应用信息，不管该应用是提供者还是消费者。
+      name: consumer
+    registry:     #注册中心配置，用于配置连接注册中心相关信息。
+      address: zookeeper://127.0.0.1:2181
+    protocol:     #协议配置，用于配置提供服务的协议信息，协议由提供方指定，消费方被动接受（订阅）。
+      name: dubbo
+      port: 20880
+    consumer:
+      check: false
+    reference:
+      loadbalance: roundrobin #轮询机制
+      #loadbalance: random #随机机制
+      #loadbalance: leastactive #最少活跃调用数机制
 
 #user:
 #  school: tongji

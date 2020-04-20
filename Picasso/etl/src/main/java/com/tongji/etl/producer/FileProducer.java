@@ -39,7 +39,7 @@ public class FileProducer extends KafkaProducer {
      * @param fileLineIterators
      */
     @Override
-    public  void produceFromFile (ArrayList<LineIterator> fileLineIterators){
+    public void produceFromFile (ArrayList<LineIterator> fileLineIterators){
         for (LineIterator lineIterator : fileLineIterators) {
             while(lineIterator.hasNext()) {
                 String line = lineIterator.nextLine();

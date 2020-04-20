@@ -27,6 +27,15 @@ spring:
       auto-offset-reset: earliest
       auto-commit-interval: 100
       enable-auto-commit: true
+  dubbo:
+    application:
+      name: provider
+    server: true
+    registry:
+      address: zookeeper://127.0.0.1:2181
+    protocol:
+      name: dubbo
+      port: 20880
 # Tomcat端口号
 server:
   port: 8090
