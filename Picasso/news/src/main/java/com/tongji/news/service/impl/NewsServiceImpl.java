@@ -1,0 +1,93 @@
+package com.tongji.news.service.impl;
+
+import com.tongji.common.exception.AppInternalError;
+import com.tongji.news.model.News;
+import com.tongji.news.model.NewsVO;
+import com.tongji.news.repository.NewsRepo;
+import com.tongji.news.service.NewsService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
+
+/**
+ * @author: Z
+ * @create: 2020/04/17
+ */
+@Service
+@Slf4j
+public class NewsServiceImpl implements NewsService {
+
+    @Autowired
+    private NewsRepo newsRepo;
+
+    @Override
+    public NewsVO insert(News news) {
+        NewsVO newsVO;
+        String newsNid = news.getNewsid();
+        if (newsNid == null) {
+            log.error("news id is null");
+            throw new AppInternalError("news id is null, news info:{}", news.toString());
+        }
+        Optional<News> newsInDb = newsRepo.findNewsByNewsid(news.getNewsid());
+        try {
+            if (newsInDb.isPresent()) {
+                //更新操作
+                if (newsNid.equals(newsInDb.get().getNewsid())) {
+                    //新闻已添加
+                    log.error("This newsid has been used!");
+                    return null;
+                }
+            }
+            //插入操作
+            newsVO = saveNews(news);
+        } catch (Exception e) {
+            return null;
+        }
+        return newsVO;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public NewsVO update(News news) {
+        NewsVO newsVO;
+        String newsNewsid = news.getNewsid();
+        if (newsNewsid == null) {
+            log.error("news id is null");
+            throw new AppInternalError("news id is null, news info:{}", news.toString());
+        }
+        Optional<News> newsInDb = newsRepo.findNewsByNewsid(news.getNewsid());
+        try {
+            if (newsInDb.isPresent()) {
+                if (!newsNewsid.equals(newsInDb.get().getNewsid())) {
+                    //账号未注册过
+                    log.error("This newsid has not been registered!");
+                    throw new AppInternalError("This newsid {} has been registered!", news.getNewsid());
+                }
+            }
+            //更新操作
+            news.setId(newsInDb.get().getId());
+            newsVO = saveNews(news);
+        } catch (Exception e) {
+            return null;
+        }
+        return newsVO;
+    }
+
+    /**
+     * 保存用户信息
+     *
+     * @param news
+     * @return
+     */
+    private NewsVO saveNews(News news) {
+        news = newsRepo.save(news);
+        if (news.getId() <= 0) {
+            log.error("fail to save the news:{}", news.toString());
+            throw new AppInternalError("fail to save the news:{}", news.toString());
+        }
+        return NewsVO.builder().newsid(news.getNewsid()).title(news.getTitle()).build();
+    }
+}

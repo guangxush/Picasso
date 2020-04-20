@@ -1,1 +1,27 @@
+# base URL
+server:
+  port: 8081
+  servlet:
+    context-path: /news
+    multipart:
+      max-file-size: 20M
+      max-request-size: 20M
 
+# spring
+spring:
+  resources:
+    static-locations: classpath:/static/
+  # Mysql data source
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/newsdb?useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root11
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+#user:
+#  school: tongji
