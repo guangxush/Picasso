@@ -12,6 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 
 /**
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 @PropertySource("classpath:config/kafka.properties")
 public class FileProducer extends KafkaProducer {
 
-    @Autowired
+    @Resource
     private KafkaTemplate<String, String> kafkaTemplate;
 
     @Autowired
@@ -45,7 +46,8 @@ public class FileProducer extends KafkaProducer {
                 String line = lineIterator.nextLine();
                 // JSON数据: {"id": 74, "label": "113", "title": "在热气球节上迎接第一缕阳光"}
                 log.info("+++++++++++++++++++++  message = {}", line);
-                kafkaTemplate.send(topic, line);
+                JsonNewsData data = fileWatcher.parseFile(line);
+                kafkaTemplate.send(topic, data.getId().toString(), line);
             }
         }
 
