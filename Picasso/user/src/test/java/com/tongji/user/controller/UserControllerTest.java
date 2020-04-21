@@ -23,6 +23,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -106,5 +107,19 @@ public class UserControllerTest extends TestCase {
         String response = result.getResponse().getContentAsString();
         System.out.println(response);
         Assert.assertTrue(response.contains("success"));
+    }
+
+    @Test
+    @Transactional
+    public void testQuery() throws Exception{
+        User user = User.builder().uid("1234599").build();
+        Assert.assertNotNull(userService.register(user));
+        String result = mockMvc.perform(get("/query")
+                .param("uid", "1234599")
+                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        System.out.println(result);
     }
 }
