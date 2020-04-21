@@ -2,11 +2,9 @@ package com.tongji.etl.producer;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.tongji.etl.model.JsonNewsData;
+import com.tongji.common.model.JsonNewsData;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.LineIterator;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.kafka.core.KafkaTemplate;

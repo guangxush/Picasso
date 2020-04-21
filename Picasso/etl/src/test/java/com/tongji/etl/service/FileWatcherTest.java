@@ -1,6 +1,6 @@
 package com.tongji.etl.service;
 
-import com.tongji.etl.model.JsonNewsData;
+import com.tongji.common.model.JsonNewsData;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

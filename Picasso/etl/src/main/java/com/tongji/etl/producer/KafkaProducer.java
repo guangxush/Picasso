@@ -1,6 +1,6 @@
 package com.tongji.etl.producer;
 
-import com.tongji.etl.model.JsonNewsData;
+import com.tongji.common.model.JsonNewsData;
 import org.apache.commons.io.LineIterator;
 
 import java.util.ArrayList;

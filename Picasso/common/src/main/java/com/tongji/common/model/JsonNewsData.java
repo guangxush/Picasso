@@ -1,4 +1,4 @@
-package com.tongji.etl.model;
+package com.tongji.common.model;
 
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +13,6 @@ public class JsonNewsData {
 
     private Long id;
     private String title;
-    private String label;
-
+    private Long label;
+    private String content;
 }

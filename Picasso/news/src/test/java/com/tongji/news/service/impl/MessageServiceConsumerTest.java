@@ -18,5 +18,6 @@ public class MessageServiceConsumerTest {
     @Test
     public void testHello(){
         Assert.assertEquals("Hello dubbo", messageServiceConsumer.hello());
+        System.out.println(messageServiceConsumer.hello());
     }
 }

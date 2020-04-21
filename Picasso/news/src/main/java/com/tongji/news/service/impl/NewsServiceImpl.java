@@ -2,7 +2,6 @@ package com.tongji.news.service.impl;
 
 import com.tongji.common.exception.AppInternalError;
 import com.tongji.news.model.News;
-import com.tongji.news.model.NewsVO;
 import com.tongji.news.repository.NewsRepo;
 import com.tongji.news.service.NewsService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,8 +23,8 @@ public class NewsServiceImpl implements NewsService {
     private NewsRepo newsRepo;
 
     @Override
-    public NewsVO insert(News news) {
-        NewsVO newsVO;
+    public News insert(News news) {
+        News newsVO;
         String newsNid = news.getNewsid();
         if (newsNid == null) {
             log.error("news id is null");
@@ -51,8 +50,8 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public NewsVO update(News news) {
-        NewsVO newsVO;
+    public News update(News news) {
+        News newsVO;
         String newsNewsid = news.getNewsid();
         if (newsNewsid == null) {
             log.error("news id is null");
@@ -82,12 +81,12 @@ public class NewsServiceImpl implements NewsService {
      * @param news
      * @return
      */
-    private NewsVO saveNews(News news) {
+    private News saveNews(News news) {
         news = newsRepo.save(news);
         if (news.getId() <= 0) {
             log.error("fail to save the news:{}", news.toString());
             throw new AppInternalError("fail to save the news:{}", news.toString());
         }
-        return NewsVO.builder().newsid(news.getNewsid()).title(news.getTitle()).build();
+        return News.builder().newsid(news.getNewsid()).title(news.getTitle()).build();
     }
 }

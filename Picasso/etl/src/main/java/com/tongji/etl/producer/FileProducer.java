@@ -2,7 +2,7 @@ package com.tongji.etl.producer;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.tongji.etl.model.JsonNewsData;
+import com.tongji.common.model.JsonNewsData;
 import com.tongji.etl.service.FileWatcher;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.LineIterator;

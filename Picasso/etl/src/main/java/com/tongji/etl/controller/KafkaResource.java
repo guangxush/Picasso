@@ -1,6 +1,6 @@
 package com.tongji.etl.controller;
 
-import com.tongji.etl.model.JsonNewsData;
+import com.tongji.common.model.JsonNewsData;
 import com.tongji.etl.producer.PostProducer;
 import com.tongji.etl.service.ScheduledTask;
 import org.springframework.beans.factory.annotation.Autowired;

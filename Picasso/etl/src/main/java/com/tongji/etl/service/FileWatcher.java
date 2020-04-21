@@ -3,8 +3,8 @@ package com.tongji.etl.service;
 
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.SftpException;
+import com.tongji.common.model.JsonNewsData;
 import com.tongji.etl.model.Process;
-import com.tongji.etl.model.JsonNewsData;
 import com.tongji.etl.model.ServerConfig;
 import com.tongji.etl.repository.ProcessRepo;
 import com.alibaba.fastjson.JSONObject;
@@ -134,7 +134,7 @@ public class FileWatcher {
         JSONObject jsonObject = (JSONObject) JSONObject.parse(line);
         return JsonNewsData.builder()
                 .id(jsonObject.getLong("id"))
-                .label(jsonObject.getString("label"))
+                .label(jsonObject.getLong("label"))
                 .title(jsonObject.getString("title"))
                 .build();
     }

@@ -17,15 +17,16 @@ public class KafkaReceiver {
 
     private static final String TOPIC = "news";
     /**
-     * receive data from kafka topic
+     * receive data from kafka topic // remove this method into MessageServiceProvider
      * @param record
      */
-    @KafkaListener(topics = {TOPIC})
+    // @KafkaListener(topics = {TOPIC})
     public void listen(ConsumerRecord<?, ?> record) {
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
         if (kafkaMessage.isPresent()) {
             Object message = kafkaMessage.get();
             log.info("----------------- record =" + record);
+
             log.info("----------------- message =" + message);
         }
     }

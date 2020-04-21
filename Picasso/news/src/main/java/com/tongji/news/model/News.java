@@ -1,6 +1,7 @@
 package com.tongji.news.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,7 +16,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "news")
-
+@Builder
 public class News {
     /**
      * 新闻表自增id

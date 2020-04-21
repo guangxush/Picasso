@@ -27,8 +27,8 @@ public class ApplicationOptions {
      */
     public void init(String inputFile) throws IOException {
         // InputStream in = this.getClass().getResourceAsStream("/"+inputFile);
-        // File file = new File("etl/src/main/resources/config/"+inputFile);
-         File file = new File("src/main/resources/config/"+inputFile); //仅测试时使用
+        File file = new File("etl/src/main/resources/config/"+inputFile);
+        //File file = new File("src/main/resources/config/"+inputFile); //仅测试时使用
         Properties props = new Properties();
         FileInputStream fileInputStream = new FileInputStream(file);
         props.load(fileInputStream);
