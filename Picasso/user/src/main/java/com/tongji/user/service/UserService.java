@@ -28,4 +28,11 @@ public interface UserService {
      * @return
      */
     UserVO update(User user);
+
+    /**
+     * 用户信息查询
+     * @param uid
+     * @return
+     */
+    User queryByCache(String uid);
 }

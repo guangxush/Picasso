@@ -16,7 +16,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/newsdb?useSSL=false&serverTimezone=GMT%2B8
     username: root
-    password: root11
+    password: root
   jpa:
     show-sql: true
     properties:

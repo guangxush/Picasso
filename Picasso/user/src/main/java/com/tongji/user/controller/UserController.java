@@ -87,4 +87,20 @@ public class UserController {
             return new ApiResponse<UserVO>().fail(userVO);
         }
     }
+
+    /**
+     * 用户信息查询
+     * @param uid
+     * @return
+     */
+    @RequestMapping(path = "/query", method = RequestMethod.GET)
+    @ResponseBody
+    public ApiResponse<User> query(@RequestParam String uid){
+        User user = userService.queryByCache(uid);
+        if(user!=null){
+            return new ApiResponse<User>().success(user);
+        } else{
+            return new ApiResponse<User>().fail(user);
+        }
+    }
 }
