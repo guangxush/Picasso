@@ -3,6 +3,7 @@ package com.tongji.etl.service;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.tongji.common.service.MessageService;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
