@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionLikeType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.tongji.common.enums.APICodeEnum;
-import com.tongji.common.exception.AppInternalError;
+import com.tongji.common.exception.ApiInternalError;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class JsonUtil {
         try {
             return OBJECT_MAPPER.readValue(json, valueType);
         } catch (Exception e) {
-            throw new AppInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
+            throw new ApiInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
         }
     }
 
@@ -47,7 +47,7 @@ public class JsonUtil {
         try {
             return OBJECT_MAPPER.readValue(json, valueType);
         } catch (Exception e) {
-            throw new AppInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
+            throw new ApiInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
         }
     }
 
@@ -63,7 +63,7 @@ public class JsonUtil {
         try {
             return OBJECT_MAPPER.readValue(json, valueType);
         } catch (Exception e) {
-            throw new AppInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
+            throw new ApiInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
         }
     }
 
@@ -79,7 +79,7 @@ public class JsonUtil {
         try {
             return OBJECT_MAPPER.readValue(json, valueType);
         } catch (Exception e) {
-            throw new AppInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
+            throw new ApiInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
         }
     }
 
@@ -97,7 +97,7 @@ public class JsonUtil {
         try {
             return OBJECT_MAPPER.readValue(json, javaType);
         } catch (Exception e) {
-            throw new AppInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
+            throw new ApiInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
         }
     }
 
@@ -116,7 +116,7 @@ public class JsonUtil {
             return OBJECT_MAPPER.readValue(json,
                     factory.constructCollectionType(List.class, valueType));
         } catch (Exception e) {
-            throw new AppInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
+            throw new ApiInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
         }
     }
 
@@ -134,7 +134,7 @@ public class JsonUtil {
             return OBJECT_MAPPER.readValue(json,
                     factory.constructCollectionType(Set.class, valueType));
         } catch (Exception e) {
-            throw new AppInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
+            throw new ApiInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
         }
     }
 
@@ -152,7 +152,7 @@ public class JsonUtil {
             return OBJECT_MAPPER.readValue(json,
                     factory.constructMapType(Map.class, String.class, valueType));
         } catch (Exception e) {
-            throw new AppInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
+            throw new ApiInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
         }
     }
 
@@ -169,7 +169,7 @@ public class JsonUtil {
         try {
             return OBJECT_MAPPER.readValue(json, valueType);
         } catch (Exception e) {
-            throw new AppInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
+            throw new ApiInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
         }
     }
 
@@ -186,7 +186,7 @@ public class JsonUtil {
             return OBJECT_MAPPER.readValue(json,
                     factory.constructMapType(Map.class, keyType, valueType));
         } catch (Exception e) {
-            throw new AppInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
+            throw new ApiInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
         }
     }
 
@@ -203,7 +203,7 @@ public class JsonUtil {
         try {
             return OBJECT_MAPPER.writeValueAsString(value);
         } catch (JsonProcessingException e) {
-            throw new AppInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", value));
+            throw new ApiInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", value));
         }
     }
 
@@ -223,7 +223,7 @@ public class JsonUtil {
         try {
             return OBJECT_MAPPER.readTree(json);
         } catch (Exception e) {
-            throw new AppInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
+            throw new ApiInternalError(String.format(APICodeEnum.INTERN_ERROR + "%s", json));
         }
     }
 

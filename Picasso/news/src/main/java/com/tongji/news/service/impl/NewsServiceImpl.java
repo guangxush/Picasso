@@ -1,6 +1,6 @@
 package com.tongji.news.service.impl;
 
-import com.tongji.common.exception.AppInternalError;
+import com.tongji.common.exception.ApiInternalError;
 import com.tongji.news.model.News;
 import com.tongji.news.repository.NewsRepo;
 import com.tongji.news.service.NewsService;
@@ -28,7 +28,7 @@ public class NewsServiceImpl implements NewsService {
         String newsNid = news.getNewsid();
         if (newsNid == null) {
             log.error("news id is null");
-            throw new AppInternalError("news id is null, news info:{}", news.toString());
+            throw new ApiInternalError("news id is null, news info:{}", news.toString());
         }
         Optional<News> newsInDb = newsRepo.findNewsByNewsid(news.getNewsid());
         try {
@@ -51,28 +51,28 @@ public class NewsServiceImpl implements NewsService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public News update(News news) {
-        News newsVO;
+        News newsInDB;
         String newsNewsid = news.getNewsid();
         if (newsNewsid == null) {
             log.error("news id is null");
-            throw new AppInternalError("news id is null, news info:{}", news.toString());
+            throw new ApiInternalError("news id is null, news info:{}", news.toString());
         }
         Optional<News> newsInDb = newsRepo.findNewsByNewsid(news.getNewsid());
         try {
             if (newsInDb.isPresent()) {
                 if (!newsNewsid.equals(newsInDb.get().getNewsid())) {
                     //账号未注册过
-                    log.error("This newsid has not been registered!");
-                    throw new AppInternalError("This newsid {} has been registered!", news.getNewsid());
+                    log.error("This newsid has not been used!");
+                    throw new ApiInternalError("This newsid {} has not been used!", news.getNewsid());
                 }
             }
             //更新操作
             news.setId(newsInDb.get().getId());
-            newsVO = saveNews(news);
+            newsInDB = saveNews(news);
         } catch (Exception e) {
             return null;
         }
-        return newsVO;
+        return newsInDB;
     }
 
     /**
@@ -85,7 +85,7 @@ public class NewsServiceImpl implements NewsService {
         news = newsRepo.save(news);
         if (news.getId() <= 0) {
             log.error("fail to save the news:{}", news.toString());
-            throw new AppInternalError("fail to save the news:{}", news.toString());
+            throw new ApiInternalError("fail to save the news:{}", news.toString());
         }
         return News.builder().newsid(news.getNewsid()).title(news.getTitle()).build();
     }

@@ -4,14 +4,13 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.CacheStats;
 import com.google.common.cache.LoadingCache;
-import com.tongji.common.exception.AppInternalError;
+import com.tongji.common.exception.ApiInternalError;
 import com.tongji.user.model.User;
 import com.tongji.user.model.UserVO;
 import com.tongji.user.repository.UserRepo;
 import com.tongji.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -101,7 +100,7 @@ public class UserServiceImpl implements UserService {
         String userUid = user.getUid();
         if (userUid == null) {
             log.error("user id is null");
-            throw new AppInternalError("user id is null, user info:{}", user.toString());
+            throw new ApiInternalError("user id is null, user info:{}", user.toString());
         }
         Optional<User> userInDb = userRepo.findUserByUid(user.getUid());
         try {
@@ -128,7 +127,7 @@ public class UserServiceImpl implements UserService {
         String userUid = user.getUid();
         if (userUid == null) {
             log.error("user id is null");
-            throw new AppInternalError("user id is null, user info:{}", user.toString());
+            throw new ApiInternalError("user id is null, user info:{}", user.toString());
         }
         Optional<User> userInDb = userRepo.findUserByUid(user.getUid());
         try {
@@ -136,7 +135,7 @@ public class UserServiceImpl implements UserService {
                 if (!userUid.equals(userInDb.get().getUid())) {
                     //账号未注册过
                     log.error("This userid has not been registered!");
-                    throw new AppInternalError("This userid {} has been registered!", user.getUid());
+                    throw new ApiInternalError("This userid {} has been registered!", user.getUid());
                 }
             }
             //更新操作
@@ -158,7 +157,7 @@ public class UserServiceImpl implements UserService {
         user = userRepo.save(user);
         if (user.getId() <= 0) {
             log.error("fail to save the user:{}", user.toString());
-            throw new AppInternalError("fail to save the user:{}", user.toString());
+            throw new ApiInternalError("fail to save the user:{}", user.toString());
         }
         return UserVO.builder().uid(user.getUid()).userInfo(user.getUserInfo()).build();
     }

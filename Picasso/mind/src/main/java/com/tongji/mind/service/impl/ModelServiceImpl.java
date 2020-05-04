@@ -1,6 +1,6 @@
 package com.tongji.mind.service.impl;
 
-import com.tongji.common.exception.AppInternalError;
+import com.tongji.common.exception.ApiInternalError;
 import com.tongji.mind.model.Model;
 import com.tongji.mind.repository.ModelRepo;
 import com.tongji.mind.service.ModelService;
@@ -25,7 +25,7 @@ public class ModelServiceImpl implements ModelService {
     public Model save(Model model) {
         if(model==null || model.getName()==null){
             log.error("model or model name isn't null");
-            throw new AppInternalError("model or model name isn't null");
+            throw new ApiInternalError("model or model name isn't null");
         }
         Optional<Model> modelInDb = modelRepo.findByName(model.getName());
         if(modelInDb.isPresent()){
@@ -51,7 +51,7 @@ public class ModelServiceImpl implements ModelService {
         model = modelRepo.save(model);
         if (model.getId() <= 0) {
             log.error("fail to save the model:{}", model.toString());
-            throw new AppInternalError("fail to save the user:{}", model.toString());
+            throw new ApiInternalError("fail to save the user:{}", model.toString());
         }
         return model;
     }
