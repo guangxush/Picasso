@@ -6,6 +6,7 @@ import com.tongji.news.repository.NewsRepo;
 import com.tongji.news.service.NewsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,9 @@ public class NewsServiceImpl implements NewsService {
 
     @Autowired
     private NewsRepo newsRepo;
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     @Override
     public News insert(News news) {
@@ -76,7 +80,7 @@ public class NewsServiceImpl implements NewsService {
     }
 
     /**
-     * 保存用户信息
+     * 保存新闻信息
      *
      * @param news
      * @return
@@ -89,4 +93,15 @@ public class NewsServiceImpl implements NewsService {
         }
         return News.builder().newsid(news.getNewsid()).title(news.getTitle()).build();
     }
+
+    /**
+     * 从缓存中查询新闻信息
+     * @param nid
+     * @return
+     */
+    @Override
+    public String queryNewsFromRedis(String nid){
+        return stringRedisTemplate.opsForValue().get(nid);
+    }
+
 }

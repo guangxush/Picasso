@@ -8,6 +8,7 @@ import com.tongji.news.model.News;
 import com.tongji.news.service.NewsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -24,6 +25,9 @@ public class MessageServiceConsumer {
     private MessageService messageService;
 
     @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
     private NewsService newsService;
 
     public String hello() {
@@ -37,6 +41,8 @@ public class MessageServiceConsumer {
         for (String key : messageMap.keySet()) {
             JsonNewsData json = parseFile(messageMap.get(key));
             News news = News.builder().newsid(key).category(json.getLabel()).title(json.getTitle()).build();
+            //存入Redis中
+            stringRedisTemplate.opsForValue().set(key, json.getTitle());
             if (newsService.insert(news) != null) {
                 log.info("news {} has been insert into db.", news.getNewsid());
                 messageCount--;

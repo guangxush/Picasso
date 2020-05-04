@@ -19,4 +19,11 @@ public interface NewsService {
      * @return
      */
     News update(News news);
+
+    /**
+     * 查询新闻信息
+     * @param nid
+     * @return
+     */
+    String queryNewsFromRedis(String nid);
 }

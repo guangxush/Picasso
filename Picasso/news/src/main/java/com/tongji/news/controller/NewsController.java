@@ -56,14 +56,34 @@ public class NewsController {
         }
     }
 
-    @RequestMapping(path = "/poll", method = RequestMethod.GET)
+    /**
+     * 拉取新闻数据
+     * @return
+     */
+    @RequestMapping(path = "/pull", method = RequestMethod.GET)
     @ResponseBody
-    public ApiResponse<Boolean> pollData(){
+    public ApiResponse<Boolean> pullData(){
         Boolean result = consumer.consumerNews();
         if (result) {
             return new ApiResponse<Boolean>().success(result);
         } else {
             return new ApiResponse<Boolean>().fail(result);
+        }
+    }
+
+    /**
+     * 新闻信息查询
+     * @param uid
+     * @return
+     */
+    @RequestMapping(path = "/query", method = RequestMethod.GET)
+    @ResponseBody
+    public ApiResponse<String> query(@RequestParam String uid){
+        String info = newsService.queryNewsFromRedis(uid);
+        if(info!=null){
+            return new ApiResponse<String>().success(info);
+        } else{
+            return new ApiResponse<String>().fail("Sorry, not found this news!");
         }
     }
 }
